@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="row justify-content-center align-items-center mt-5">
+          <div class="col-md-6">
+            <div class="pagetitle mb-4">
+              <h1 class="text-center">Ürün Kategorisi Oluştur</h1>
+            </div>
+            <!-- End Page Title -->
+
+            <form method="post" class="mb-4">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <div class="mb-3 row">
+                <label for="name" class="col-sm-4 col-form-label text-end"
+                  >Kategori İsmi</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                  />
+                </div>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

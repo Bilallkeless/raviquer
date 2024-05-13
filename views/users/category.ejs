@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %> <% if (splideCategories.length < 5) { %>
+    <link rel="stylesheet" href="/css/noarrow.css" />
+    <% } %>
+  </head>
+  <body>
+    <div class="nav-and-head-categories">
+      <%- include('../partials/nav') %>
+      <div class="category-head-categories">
+        <%- include('../partials/head-categories') %>
+      </div>
+    </div>
+    <% headCategories.forEach(category => { %> <% }) %> <%
+    sections.forEach(section => { %> <%- include('../partials/sections', {
+    section: section }) %> <% }) %>
+
+    <section class="sections">
+      <h2
+        class="text-center text-gray-900 text-3xl font-semibold font-poppins underline underline-offset-[10px] underline-thickness-1.5 mb-8"
+      >
+        Diğer Bölümler
+      </h2>
+      <div class="splide" id="category-splide">
+        <div class="splide__track">
+          <div
+            class="splide__list<%= splideCategories.length < 5 ? ' justify-center ' : '' %>"
+          >
+            <% splideCategories.forEach(splideCategory => { %>
+            <div class="splide__slide">
+              <div class="img-box overflow-hidden splide-shadow">
+                <a href="<%= splideCategory.headcategory.category %>">
+                  <img
+                    src="static/images/splide-img/<%- splideCategory.resim %>"
+                  />
+                </a>
+                <div class="w-full text-center p-2 bg-white">
+                  <a href="#" class="splide-category-name font-poppins block">
+                    <%= splideCategory.name %>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+
+    <!-- Splide Js Cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="static/js/category-splide.js"></script>
+    <script src="static/js/navanimation.js"></script>
+  </body>
+</html>

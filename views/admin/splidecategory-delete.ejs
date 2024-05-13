@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-3">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div
+              class="bg-light border border-secondary p-4 rounded-lg text-center"
+            >
+              <p class="mb-3">
+                <b><%= splideCategory.name %></b> <br />
+                isimli Splide Category kaydını silmek istiyor musunuz?
+              </p>
+              <form method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <input
+                  type="hidden"
+                  name="splidecategoryid"
+                  value="<%= splideCategory.splidecategoryid %>"
+                />
+                <button
+                  class="btn btn-danger px-4 py-2 rounded-md mr-2 mb-2 mb-md-0"
+                >
+                  Evet
+                </button>
+                <a
+                  href="/admin/splidecategories"
+                  class="btn btn-secondary px-4 py-2 rounded-md mr-2 mb-2 mb-md-0"
+                  >Vazgeç</a
+                >
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

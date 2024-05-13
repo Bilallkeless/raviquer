@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="nav-and-head-categories">
+      <%- include('../partials/nav') %>
+      <div class="product-head-categories hidden">
+        <%- include('../partials/head-categories') %>
+      </div>
+    </div>
+
+    <div class="lg:px-16 py-2 lg:py-8">
+      <div class="text-lg font-poppins uppercase pl-8">
+        <%= selectProductName%>
+      </div>
+      <div class="md:mt-2 lg:mt-8">
+        <div
+          class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          <% products.forEach(product => { %>
+          <div
+            class="bg-white rounded overflow-hidden transition-transform transform pt-4 lg:pt-8"
+          >
+            <a
+              href="/<%- headCategory.category %>/<%- productCategory.productcategory %>/<%= product.productid %>?productName=<%= product.urunismi %>"
+            >
+              <!-- Hedef URL'yi buraya ekleyin -->
+              <img
+                src="/static/images/<%- headCategory.category %>/<%- productCategory.productcategory %>/<%- product.resim %>"
+                class="w-full object-top object-cover mb-2 md:h-[28rem]"
+              />
+              <div
+                class="text-sm text-black-600 font-poppins font-medium ml-2 lg:ml-0"
+              >
+                <%=product.urunismi %>
+              </div>
+              <div class="text-lg font-bold font-poppins ml-2 lg:ml-0">
+                <%=product.fiyat %>
+              </div>
+            </a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/static/js/navanimation.js"></script>
+  </body>
+</html>

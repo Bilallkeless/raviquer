@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-3">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form
+              method="post"
+              enctype="multipart/form-data"
+              action="/admin/splidecategories/<%= splideCategory.splidecategoryid %>"
+            >
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <input
+                type="hidden"
+                name="splidecategoryid"
+                value="<%= splideCategory.splidecategoryid %>"
+              />
+              <input
+                type="hidden"
+                name="resim"
+                value="<%= splideCategory.resim %>"
+              />
+              <div class="mb-3 row">
+                <label for="name" class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    value="<%= splideCategory.name %>"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="resim" class="col-sm-4 col-form-label">Resim</label>
+                <div class="col-sm-8">
+                  <img
+                    src="/static/images/splide-img/<%= splideCategory.resim %>"
+                    alt=""
+                    width="120"
+                  />
+                  <input
+                    type="file"
+                    class="form-control mt-2"
+                    id="resim"
+                    name="resim"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label for="kategori" class="col-sm-4 col-form-label"
+                  >Kategori</label
+                >
+                <div class="col-sm-8">
+                  <select name="kategori" id="kategori" class="form-select">
+                    <option value="-1" selected>Seçiniz</option>
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category.headcategoryid %>">
+                      <%= category.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <script>
+                    document.querySelector("#kategori").value =
+                      "<%= splideCategory.headcategoryid %>";
+                  </script>
+                </div>
+              </div>
+
+              <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

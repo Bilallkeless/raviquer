@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="">
+              <form
+                method="post"
+                class="max-w-md mx-auto"
+                enctype="multipart/form-data"
+                action="/admin/section/<%= section.sectionid %>?_csrf=<%= csrfToken %>"
+              >
+                <input
+                  type="hidden"
+                  name="sectionid"
+                  value="<%= section.sectionid %>"
+                />
+                <input
+                  type="hidden"
+                  name="resim"
+                  value="<%= section.resim %>"
+                />
+                <div class="mb-3">
+                  <label for="baslik" class="form-label">Başlık</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="baslik"
+                    name="baslik"
+                    value="<%= section.baslik %>"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="aciklama" class="form-label">Açıklama</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="aciklama"
+                    name="aciklama"
+                    value="<%= section.aciklama %>"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="fiyat" class="form-label">Fiyat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fiyat"
+                    name="fiyat"
+                    value="<%= section.fiyat %>"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="resim" class="form-label">Resim</label>
+                  <div>
+                    <img
+                      src="/static/images/section/<%= section.resim %>"
+                      alt=""
+                      width="120"
+                    />
+                    <input
+                      type="file"
+                      class="form-control mt-2"
+                      id="resim"
+                      name="resim"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="kategori" class="form-label">Kategori</label>
+                  <select name="kategori" id="kategori" class="form-select">
+                    <option value="-1" selected>Seçiniz</option>
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category.dataValues.headcategoryid %>">
+                      <%= category.dataValues.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <script>
+                    document.querySelector("#kategori").value =
+                      "<%= section.headcategoryid %>";
+                  </script>
+                </div>
+
+                <div class="mb-2">
+                  <label for="urunkategori" class="form-label"
+                    >Ürün Kategorisi</label
+                  >
+                  <select
+                    name="urunkategori"
+                    id="urunkategori"
+                    class="form-select"
+                  >
+                    <option value="" selected>Seçiniz</option>
+                    <% productcategories.forEach(productcategory => { %>
+                    <option
+                      value="<%= productcategory.dataValues.productcategoryid %>"
+                    >
+                      <%= productcategory.dataValues.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <script>
+                    document.querySelector("#urunkategori").value =
+                      "<%= section.productcategoryid %>";
+                  </script>
+                </div>
+
+                <div class="mb-1">
+                  <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

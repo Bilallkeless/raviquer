@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <form
+              method="post"
+              class="max-w-md mx-auto"
+              enctype="multipart/form-data"
+              action="/admin/product/<%= product.productid %>/detail?_csrf=<%= csrfToken %>"
+            >
+              <input
+                type="hidden"
+                name="productid"
+                value="<%= product.productid %>"
+              />
+              <input
+                type="hidden"
+                name="detayresim1"
+                value="<%= product.detayresim1 %>"
+              />
+              <input
+                type="hidden"
+                name="detayresim2"
+                value="<%= product.detayresim2 %>"
+              />
+              <input
+                type="hidden"
+                name="detayresim3"
+                value="<%= product.detayresim3 %>"
+              />
+
+              <div class="mb-3 row">
+                <label
+                  for="detayresim1"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Detay Resim 1
+                </label>
+                <div class="col-sm-9">
+                  <img
+                    src="/static/images/<%= product.headcategory.category %>/<%= product.productcategory.productcategory %>/urundetay/<%= product.detayresim1 %>"
+                    alt=""
+                    width="120"
+                  />
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="detayresim1"
+                    name="detayresim1"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="detayresim2"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Detay Resim 2
+                </label>
+                <div class="col-sm-9">
+                  <img
+                    src="/static/images/<%= product.headcategory.category %>/<%= product.productcategory.productcategory %>/urundetay/<%= product.detayresim2 %>"
+                    alt=""
+                    width="120"
+                  />
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="detayresim2"
+                    name="detayresim2"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="detayresim3"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Detay Resim 3
+                </label>
+                <div class="col-sm-9">
+                  <img
+                    src="/static/images/<%= product.headcategory.category %>/<%= product.productcategory.productcategory %>/urundetay/<%= product.detayresim3 %>"
+                    alt=""
+                    width="120"
+                  />
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="detayresim3"
+                    name="detayresim3"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

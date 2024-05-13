@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body class="bg-light font-sans">
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th
+                      class="px-4 py-2 text-left text-sm font-semibold text-gray-600"
+                    >
+                      #
+                    </th>
+                    <th
+                      class="px-4 py-2 text-left text-sm font-semibold text-gray-600"
+                    >
+                      Ad Soyad
+                    </th>
+                    <th
+                      class="px-4 py-2 text-left text-sm font-semibold text-gray-600"
+                    >
+                      Email
+                    </th>
+                    <th
+                      class="px-4 py-2 text-left text-sm font-semibold text-gray-600"
+                    >
+                      Roller
+                    </th>
+                    <th
+                      class="px-4 py-2 text-left text-sm font-semibold text-gray-600"
+                    >
+                      İşlemler
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% users.forEach(user => { %>
+                  <tr>
+                    <td class="px-4 py-2 text-sm font-semibold">
+                      #<%= user.id %>
+                    </td>
+                    <td class="px-4 py-2 text-sm font-semibold">
+                      <%= user.fullname %>
+                    </td>
+                    <td class="px-4 py-2 text-sm font-semibold">
+                      <%= user.email %>
+                    </td>
+                    <td class="px-4 py-2 text-sm font-semibold">
+                      <% user.roles.forEach(role => { %> <%= role.rolename %>
+                      <br />
+                      <% }) %>
+                    </td>
+                    <td class="px-4 py-2">
+                      <a
+                        href="/admin/users/<%= user.id %>"
+                        class="btn btn-primary btn-sm"
+                        >Düzenle</a
+                      >
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

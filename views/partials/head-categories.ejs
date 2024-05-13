@@ -1,0 +1,13 @@
+<div class="head-categories flex justify-center px-4 md:px-[5rem]">
+  <!-- px değeri mobilde ayarlanabilir -->
+  <% headCategories.forEach(function(headCategory){ %>
+
+  <a
+    href="/<%= headCategory.category %>"
+    class="text-black flex items-center justify-center font-poppins font-medium text-sm py-1 px-4 md:px-8 border border-black rounded-full cursor-pointer mx-2 md:mx-4 h-9 w-22 hover:bg-black hover:text-white <%= selectedCategory == headCategory.category ? 'bg-black text-white' : 'bg-white' %>"
+  >
+    <%= headCategory.name %>
+  </a>
+
+  <% }) %>
+</div>

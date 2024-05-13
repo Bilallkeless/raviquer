@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-3">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="mt-3">
+              <% if (action != "undefined" && action=="edit") { %>
+              <div class="alert alert-success" role="alert">
+                <%= sectionid %> id numaralı Alan Güncellendi.
+              </div>
+              <% } %> <% if (action != "undefined" && action=="create") { %>
+              <div class="alert alert-success" role="alert">Alan Eklendi.</div>
+              <% } %> <% if (action != "undefined" && action=="delete") { %>
+              <div class="alert alert-danger" role="alert">Alan Silindi.</div>
+              <% } %>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">resim</th>
+                      <th scope="col">baslik</th>
+                      <th scope="col">kategori</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% sections.forEach(section => { %>
+                    <tr>
+                      <td>#<%= section.dataValues.sectionid %></td>
+                      <td>
+                        <img
+                          src="/static/images/section/<%= section.dataValues.resim %>"
+                          class="img-thumbnail"
+                          alt=""
+                          style="max-width: 200px"
+                        />
+                      </td>
+                      <td><%= section.dataValues.baslik %></td>
+                      <td><%= section.dataValues.headcategory.name %></td>
+                      <td>
+                        <a
+                          class="btn btn-primary btn-sm"
+                          href="/admin/section/<%= section.dataValues.sectionid %>"
+                          role="button"
+                        >
+                          Düzenle
+                        </a>
+                        <a
+                          class="btn btn-danger btn-sm"
+                          href="/admin/section/delete/<%= section.dataValues.sectionid %>"
+                          role="button"
+                        >
+                          Sil
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

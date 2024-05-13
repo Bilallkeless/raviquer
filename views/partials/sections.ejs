@@ -1,0 +1,56 @@
+<div
+  class="mt-6 mx-4 md:mx-20 relative flex justify-center items-center text-center h-full rounded-lg overflow-hidden splide-shadow mobile-section-div"
+>
+  <a
+    href="/<%= section.headcategory.category %>/<%= section.productcategory.productcategory %>"
+    class="block w-full h-full"
+  >
+    <!-- Kıyafet resmi -->
+    <img
+      src="static/images/section/<%= section.resim %>"
+      alt="Kıyafet Resmi"
+      class="w-full h-full object-cover rounded-lg mobile-section-image"
+    />
+
+    <!-- Başlık, Açıklama ve Fiyat bilgisi -->
+    <div
+      class="absolute top-2/3 -translate-y-1/2 left-0 w-full h-full flex flex-col justify-center items-center p-4 text-white"
+    >
+      <!-- Flex ve text-center özellikleri ekleyelim -->
+      <h1
+        class="text-3xl md:text-6xl font-bold mb-3 font-poppins custom-text-shadow"
+      >
+        <%= section.baslik %>
+      </h1>
+      <p
+        class="text-lg md:text-xl mb-2 font-bold font-poppins custom-text-shadow"
+      >
+        <%= section.aciklama %>
+      </p>
+      <p
+        class="text-xl md:text-3xl mb-8 font-bold font-poppins custom-text-shadow"
+      >
+        <%= section.fiyat %>
+      </p>
+      <button
+        class="bg-white text-base md:text-lg text-black font-medium py-1 px-4 md:px-8 font-poppins custom-text-shadow rounded-full cursor-pointer h-11 w-22 hover:bg-black hover:text-white transition duration-300 ease-in-out"
+      >
+        Şimdi Görüntüle
+      </button>
+    </div>
+  </a>
+</div>
+
+<style>
+  @media (min-width: 1024px) {
+    .mobile-section-image {
+      width: 100%; /* Resmin div'i tamamen kaplamasını sağlar */
+      height: auto; /* Resmin boyunu orantılı olarak ayarlar */
+    }
+  }
+  @media (max-width: 768px) {
+    .mobile-section-div {
+      aspect-ratio: auto 576 / 608;
+    }
+  }
+</style>

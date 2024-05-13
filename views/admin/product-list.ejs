@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <% if (action != "undefined" && action=="edit") { %>
+            <div class="alert alert-success" role="alert">
+              <%= productid %> id numaralı Ürün Güncellendi.
+            </div>
+            <% } %> <% if (action != "undefined" && action=="create") { %>
+            <div class="alert alert-success" role="alert">Ürün Eklendi.</div>
+            <% } %> <% if (action != "undefined" && action=="delete") { %>
+            <div class="alert alert-danger" role="alert">Ürün Silindi.</div>
+            <% } %>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">resim</th>
+                    <th scope="col">ürün ismi</th>
+                    <th scope="col">kategori</th>
+                    <th scope="col">ürün kategorisi</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                  <% products.forEach(product => { %>
+                  <tr>
+                    <td>#<%= product.dataValues.productid %></td>
+                    <td>
+                      <img
+                        src="/static/images/<%- product.dataValues.headcategory.category %>/<%- product.dataValues.productcategory.productcategory %>/<%- product.dataValues.resim %>"
+                        class="img-thumbnail"
+                        alt=""
+                        style="max-width: 100px"
+                      />
+                    </td>
+                    <td><%= product.dataValues.urunismi %></td>
+                    <td><%= product.dataValues.headcategory.name %></td>
+                    <td><%= product.dataValues.productcategory.name %></td>
+                    <td>
+                      <a
+                        href="/admin/product/<%= product.dataValues.productid %>"
+                        class="btn btn-primary me-2"
+                        >Düzenle</a
+                      >
+                      <a
+                        href="/admin/product/delete/<%= product.dataValues.productid %>"
+                        class="btn btn-danger"
+                        >Sil</a
+                      >
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

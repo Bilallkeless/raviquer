@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body class="bg-light">
+    <%- include('../partials/adminpanel-bar') %>
+    <main id="main" class="main">
+      <div class="container py-4">
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-7">
+            <div class="card">
+              <% if (action != "undefined" && action=="edit") { %>
+              <div class="card-body bg-success text-white">
+                <%= productcategoryid %> numaralı Ürün Kategorisi Güncellendi.
+              </div>
+              <% } %> <% if (action != "undefined" && action=="create") { %>
+              <div class="card-body bg-success text-white">
+                Ürün Kategorisi Eklendi.
+              </div>
+              <% } %> <% if (action != "undefined" && action=="delete") { %>
+              <div class="card-body bg-danger text-white">
+                Ürün Kategorisi Silindi.
+              </div>
+              <% } %>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Kategori</th>
+                      <th scope="col">İşlemler</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% productCategories.forEach(productCategory => { %>
+                    <tr>
+                      <td>
+                        <%= productCategory.dataValues.productcategoryid %>
+                      </td>
+                      <td><%= productCategory.dataValues.name %></td>
+                      <td><%= productCategory.dataValues.productcategory %></td>
+                      <td>
+                        <a
+                          href="/admin/productcategories/<%= productCategory.dataValues.productcategoryid %>"
+                          class="btn btn-primary me-2 mb-2 mb-md-0"
+                          >Düzenle</a
+                        >
+                        <a
+                          href="/admin/productcategory/delete/<%= productCategory.dataValues.productcategoryid %>"
+                          class="btn btn-danger me-2 mb-2 mb-md-0"
+                          >Sil</a
+                        >
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

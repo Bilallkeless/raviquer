@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body class="bg-light font-sans">
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <form method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+              <input type="hidden" name="userid" value="<%= user.id %>" />
+              <div class="mb-3">
+                <label for="name" class="form-label">Ad Soyad</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  name="fullname"
+                  value="<%= user.fullname %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  value="<%= user.email %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="roles" class="form-label">Roller</label>
+                <% roles.forEach(role => { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="role_<%=
+                  role.id %>" name="roles[]" value="<%= role.id %>" <%=
+                  user.roles.some(rol => rol.id == role.id) ? "checked":"" %>>
+                  <label class="form-check-label" for="role_<%= role.id %>">
+                    <%= role.rolename %>
+                  </label>
+                </div>
+                <% }) %>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

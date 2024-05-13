@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <form
+              method="post"
+              class="max-w-md mx-auto"
+              enctype="multipart/form-data"
+              action="/admin/product/<%= product.productid %>?_csrf=<%= csrfToken %>"
+            >
+              <input
+                type="hidden"
+                name="productid"
+                value="<%= product.productid %>"
+              />
+              <input type="hidden" name="resim" value="<%= product.resim %>" />
+
+              <div class="mb-3 row">
+                <label
+                  for="kategori"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Kategori
+                </label>
+                <div class="col-sm-9">
+                  <select name="kategori" id="kategori" class="form-select">
+                    <option value="-1" selected>Seçiniz</option>
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category.headcategoryid %>">
+                      <%= category.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <script>
+                    document.querySelector("#kategori").value =
+                      "<%= product.headcategoryid %>";
+                  </script>
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="urunkategori"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Ürün Kategorisi
+                </label>
+                <div class="col-sm-9">
+                  <select
+                    name="urunkategori"
+                    id="urunkategori"
+                    class="form-select"
+                  >
+                    <option value="" selected>Seçiniz</option>
+                    <% productcategories.forEach(productcategory => { %>
+                    <option value="<%= productcategory.productcategoryid %>">
+                      <%= productcategory.name %>
+                    </option>
+                    <% }) %>
+                  </select>
+                  <script>
+                    document.querySelector("#urunkategori").value =
+                      "<%= product.productcategoryid %>";
+                  </script>
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="urunismi"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Ürün İsmi
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="urunismi"
+                    name="urunismi"
+                    value="<%= product.urunismi %>"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="fiyat"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Fiyat
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fiyat"
+                    name="fiyat"
+                    value="<%= product.fiyat %>"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="urunaciklama"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold pt-1"
+                >
+                  Açıklama
+                </label>
+                <div class="col-sm-9">
+                  <textarea
+                    id="urunaciklama"
+                    name="urunaciklama"
+                    rows="4"
+                    class="form-control"
+                  >
+<%= product.urunaciklama %></textarea
+                  >
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label
+                  for="resim"
+                  class="col-sm-3 col-form-label text-sm-end fw-bold"
+                >
+                  Resim
+                </label>
+                <div class="col-sm-9">
+                  <img
+                    src="/static/images/<%= product.headcategory.category %>/<%= product.productcategory.productcategory %>/<%= product.resim %>"
+                    alt=""
+                    width="120"
+                  />
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="resim"
+                    name="resim"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <div class="col-sm-9 offset-sm-3">
+                  <button type="submit" class="btn btn-primary">İlerle</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

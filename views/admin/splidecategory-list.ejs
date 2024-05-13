@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body>
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card">
+              <% if (action != "undefined" && action=="edit") { %>
+              <div class="alert alert-success" role="alert">
+                <%= splidecategoryid %> id numaralı Splide Category Güncellendi.
+              </div>
+              <% } %> <% if (action != "undefined" && action=="create") { %>
+              <div class="alert alert-success" role="alert">
+                Splide Category Eklendi.
+              </div>
+              <% } %> <% if (action != "undefined" && action=="delete") { %>
+              <div class="alert alert-danger" role="alert">
+                Splide Category Silindi.
+              </div>
+              <% } %>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr class="bg-gray-50">
+                        <th scope="col">#</th>
+                        <th scope="col">Resim</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">İşlemler</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% splideCategories.forEach(splideCategory => { %>
+                      <tr class="hover:bg-gray-100">
+                        <td>
+                          <%= splideCategory.dataValues.splidecategoryid %>
+                        </td>
+                        <td>
+                          <img
+                            src="/static/images/splide-img/<%= splideCategory.dataValues.resim %>"
+                            class="img-thumbnail"
+                            alt=""
+                            style="max-width: 100px"
+                          />
+                        </td>
+                        <td><%= splideCategory.dataValues.name %></td>
+                        <td>
+                          <%= splideCategory.dataValues.headcategory.name %>
+                        </td>
+                        <td>
+                          <div class="btn-group" role="group">
+                            <a
+                              href="/admin/splidecategories/<%= splideCategory.dataValues.splidecategoryid %>"
+                              class="btn btn-primary"
+                              >Düzenle</a
+                            >
+                            <a
+                              href="/admin/splidecategory/delete/<%= splideCategory.dataValues.splidecategoryid %>"
+                              class="btn btn-danger"
+                              >Sil</a
+                            >
+                          </div>
+                        </td>
+                      </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

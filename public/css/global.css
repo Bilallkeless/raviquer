@@ -1,0 +1,165 @@
+@import "./_splide.css";
+@import "./_product-detail.css";
+
+/* openbtn */
+.openbtn {
+  width: 50px;
+  height: 58px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.openbtn span {
+  position: absolute;
+  background: #000;
+  display: inline-block;
+  border-radius: 3px;
+  left: 14px;
+  /* height: 2.5px; */
+  transition: all 0.4s;
+}
+
+.openbtn span:nth-of-type(1) {
+  top: 15px;
+  width: 45%;
+  height: 2px;
+}
+
+.openbtn span:nth-of-type(2) {
+  top: 25px; /* Önceki değeri 23px'den 25px'e çıkardık */
+  width: 45%;
+  height: 3px; /* Boyutu artırdık */
+}
+
+.openbtn span:nth-of-type(3) {
+  top: 35px; /* Önceki değeri 31px'den 35px'e çıkardık */
+  width: 45%;
+  height: 2px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+  width: 50%;
+  top: 20px; /* Önceki değeri 15px'den 18px'e çıkardık */
+  left: 14px;
+  transform: translateY(6px) rotate(-135deg);
+}
+
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3) {
+  width: 50%;
+  top: 32px; /* Önceki değeri 31px'den 30px'e düşürdük */
+  left: 14px;
+  transform: translateY(-6px) rotate(135deg);
+}
+
+/** -------- ÖZEL SCROLLBAR BAŞLANGIÇ--------- */
+
+::-webkit-scrollbar,
+html::-webkit-scrollbar-thumb:hover {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb:hover {
+  background: #000;
+  border-radius: 2px;
+  border: 2px solid #ededed;
+}
+
+::-webkit-scrollbar-track,
+html::-webkit-scrollbar-thumb:hover {
+  background: #ededed;
+}
+
+.header ul,
+#category-splide ul,
+#new-products-splide ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sections {
+  margin-top: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+/** -------- ÖZEL SCROLLBAR BİTİŞ--------- */
+
+/** -------- ÖZEL SHADOW TANIMLAMALARI BAŞLANGIÇ--------- */
+
+.custom-text-shadow {
+  text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.splide-shadow {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/** -------- ÖZEL SHADOW TANIMLAMALARI BİTİŞ--------- */
+
+/** ---- FOOTER BAŞLANGIÇ----- */
+
+.footer {
+  justify-content: center;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* İkon genişliği */
+  height: 40px; /* İkon yüksekliği */
+  background-color: #ededed; /* Gri arka plan rengi */
+  border-radius: 50%; /* Tam yuvarlak kenarlık */
+}
+
+/** ---- FOOTER BİTİŞ----- */
+
+/* Modal */
+.modal {
+  display: none; /* Modalı varsayılan olarak gizle */
+  position: fixed; /* Sabit bir pozisyon kullanarak modalı ekranın sağ kısmına yerleştir */
+  z-index: 1; /* Diğer içeriğin üzerine çıkacak şekilde sırala */
+  right: 0;
+  top: 0;
+  height: 100%; /* Modalın yüksekliğini ekran yüksekliği kadar ayarla */
+  width: 25%; /* Modalın genişliğini ekran genişliğinin %20'si kadar ayarla */
+  background-color: #fefefe; /* Modal arka plan rengi */
+  overflow-y: auto; /* Eğer modal içeriği ekran boyutundan büyükse dikey kaydırma çubukları ekle */
+  padding: 58px 30px 0px 30px; /* Modal içeriğinin iç kenar boşluğunu ayarla */
+  box-shadow: 1px 1px 25px #0007; /* Modalı hafif bir gölge ile vurgula */
+}
+
+/* Kapatma düğmesi */
+.close {
+  position: absolute; /* Mutlak bir konum kullanarak kapatma düğmesini modal içinde konumlandır */
+  top: 20px;
+  right: 18px;
+  cursor: pointer;
+  background-color: #f7f7f7; /* Arkaplan rengi */
+  width: 35px; /* Düğmenin genişliği */
+  height: 35px; /* Düğmenin yüksekliği */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Yuvarlak arkaplan */
+}
+
+/* Kapatma düğmesi SVG */
+.feather {
+  display: block;
+}
+
+.feather-x line {
+  transition: stroke 0.3s ease; /* Renk değişiminde geçiş efekti */
+}
+
+/* Kapatma düğmesi hover durumunda */
+.close:hover .feather-x line {
+  stroke: #1e1e1e; /* X işareti rengi hover durumunda */
+}

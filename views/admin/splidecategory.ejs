@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/adminpanel-head') %>
+  </head>
+  <body class="bg-light font-sans">
+    <%- include('../partials/adminpanel-bar') %>
+
+    <main id="main" class="main">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <h2>Splide Kategorisi Oluştur</h2>
+                <a
+                  href="/admin/splidecategory/create"
+                  class="btn btn-primary mt-3"
+                  >Oluştur</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <h2>Splide Kategorilerini Listele</h2>
+                <a href="/admin/splidecategories" class="btn btn-primary mt-3"
+                  >Listele</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

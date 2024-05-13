@@ -1,0 +1,65 @@
+/* Ek CSS dosyası */
+
+/* ÜRÜN DETAY SAYFASINDAKİ RESİMLERİN STİCKY ÖZELLİĞİ */
+.sticky-container {
+  display: flex;
+}
+
+.product-images {
+  flex-shrink: 0;
+  width: 60%; /* Resimlerin genişliği */
+}
+
+.product-details {
+  width: 40%; /* Ürün detaylarının genişliği */
+  position: relative;
+}
+
+.sticky-details {
+  position: sticky;
+  top: 20px; /* Ürün detaylarının üstünden ne kadar mesafede sabitlensin */
+  padding: 0px 16px 8px 16px; /* Padding değerleri */
+  height: fit-content; /* İçeriği kadar yükseklik */
+}
+
+.box-shadow {
+  box-shadow: 0 0 6px #c1c1c1; /* Gölge efekti */
+}
+
+/* ÜRÜN DETAY ÜRÜN BEDENLERİ */
+.sticky-details .size-button {
+  background-color: white;
+  color: black;
+  border: 1px solid #d1d5db;
+  padding: 5px 11px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sticky-details .size-button.active {
+  border-color: black; /* Aktif durumda siyah kenarlık */
+}
+
+/* Mobil ve tablet görünümü için */
+@media (max-width: 1024px) {
+  .sticky-container {
+    display: block; /* Mobil ve tablet görünümünde dikey düzende görünsün */
+  }
+
+  .product-images {
+    width: 100%; /* Resimlerin genişliği tüm ekran genişliğini kaplasın */
+    margin-bottom: 20px; /* Resimler arasına boşluk ekleyelim */
+  }
+
+  .product-details {
+    width: 100%; /* Detaylar da tüm ekran genişliğini kaplasın */
+  }
+}
+
+/* Tablet görünümü için */
+@media (max-width: 768px) {
+  .product-images {
+    margin-bottom: 10px; /* Tablet görünümünde daha küçük bir boşluk bırakalım */
+  }
+}
