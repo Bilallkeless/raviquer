@@ -1,6 +1,6 @@
 # Node.js + Express.js + MySQL + Javascript + Tailwind CSS ile Responsive Dinamik Giyim Mağazası E-Ticaret Uygulaması
 
-<img src="https://r.resimlink.com/Ed9Gv.png" alt="anasayfa"/>
+<img src="https://ibb.co/1XYKr9Q" alt="anasayfa"/>
 
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGE3Z3Q1aHBuNHIzZnlrcXB3NHh6OWd1NWJ3MHJyb3I4amM4a2kxayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zxpW7mBXGjJn5RkhYd/giphy.gif" alt="adminpanel"/>
 
