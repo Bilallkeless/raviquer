@@ -1,6 +1,6 @@
 # Node.js + Express.js + MySQL + Javascript + Tailwind CSS ile Responsive Dinamik Giyim Mağazası E-Ticaret Uygulaması
 
-<a href="https://ibb.co/1XYKr9Q"><img src="https://i.ibb.co/HPLYtr4/raviqueanasayfa.png" alt="raviqueanasayfa" border="0"></a>
+![raviqueanasayfa](https://github.com/user-attachments/assets/24fe1956-e597-4d23-a87b-5a0c2136ba81)
 
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGE3Z3Q1aHBuNHIzZnlrcXB3NHh6OWd1NWJ3MHJyb3I4amM4a2kxayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zxpW7mBXGjJn5RkhYd/giphy.gif" alt="adminpanel"/>
 
